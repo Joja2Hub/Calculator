@@ -1,24 +1,22 @@
 package com.example.calculation
 
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val curNum = findViewById<TextView>(R.id.tVCurNum)
+        val curNum = findViewById<EditText>(R.id.edCurNum)
         val backNum = findViewById<TextView>(R.id.tVBackNum)
         val operationText = findViewById<TextView>(R.id.tVOperation)
-        var answer: Boolean  = false
-        var num1: Double = -2342.2;
-        var num2: Double = num1;
+        var num1 = 0.0
+        var num2: Double
 
         val btn1: Button = findViewById(R.id.butOne)
         btn1.setOnClickListener {
@@ -77,99 +75,188 @@ class MainActivity : AppCompatActivity() {
 
         val btnCL: Button = findViewById(R.id.butClear)
         btnCL.setOnClickListener {
-            curNum.text = ""
+            curNum.text.clear()
             backNum.text = ""
             operationText.text = ""
         }
 
 
-        var operation: String = ""
+        var operation = ""
 
         val btnAdd: Button = findViewById(R.id.butPlus)
         btnAdd.setOnClickListener {
-            if(backNum.text.isEmpty() || operationText.text.isEmpty()) {
+            if (backNum.text.isEmpty() || operationText.text.isEmpty() || curNum.text.isEmpty()) {
                 operation = "+"
                 operationText.text = operation
                 backNum.text = curNum.text
-                curNum.text = ""
+                curNum.text.clear()
                 num1 = backNum.text.toString().toDouble()
-            }
-            else
-            {
-                val result: Double = num1 + num2
-                if(result % 10.0 == 0.0)
+            } else {
+                num2 = curNum.text.toString().toDouble()
+                num1 = backNum.text.toString().toDouble()
+                var result = 0.0
+                when (operation) {
+                    "+" -> result = num1 + num2
+                    "-" -> result = num1 - num2
+                    "*" -> result = num1 * num2
+                    "/" -> result = num1 / num2
+                }
+                if (result % 10.0 == 0.0)
                     backNum.text = result.toInt().toString()
                 else
                     backNum.text = result.toString()
-                num2 = result;
+                num2 = result
+                curNum.text.clear()
+                operation = "+"
+                operationText.text = operation
             }
 
         }
 
         val btnMin: Button = findViewById(R.id.butMinus)
         btnMin.setOnClickListener {
-            operation = "-"
-            operationText.text = operation
-            val currentText = curNum.text.toString()
-            curNum.text = ""
-            backNum.text = currentText
-            num1 = backNum.text.toString().toDouble()
+            if (backNum.text.isEmpty() || operationText.text.isEmpty() || curNum.text.isEmpty()) {
+                operation = "-"
+                operationText.text = operation
+                backNum.text = curNum.text
+                curNum.text.clear()
+                num1 = backNum.text.toString().toDouble()
+            } else {
+                num2 = curNum.text.toString().toDouble()
+                num1 = backNum.text.toString().toDouble()
+                var result = 0.0
+                when (operation) {
+                    "+" -> result = num1 + num2
+                    "-" -> result = num1 - num2
+                    "*" -> result = num1 * num2
+                    "/" -> result = num1 / num2
+                }
+                if (result % 10.0 == 0.0)
+                    backNum.text = result.toInt().toString()
+                else
+                    backNum.text = result.toString()
+                num2 = result
+                curNum.text.clear()
+                operation = "-"
+                operationText.text = operation
+            }
         }
 
         val btnDiv: Button = findViewById(R.id.butDivis)
         btnDiv.setOnClickListener {
-            operation = "/"
-            operationText.text = operation
-            val currentText = curNum.text.toString()
-            curNum.text = ""
-            backNum.text = currentText
-            num1 = backNum.text.toString().toDouble()
+            if (backNum.text.isEmpty() || operationText.text.isEmpty() || curNum.text.isEmpty()) {
+                operation = "/"
+                operationText.text = operation
+                backNum.text = curNum.text
+                curNum.text.clear()
+                num1 = backNum.text.toString().toDouble()
+            } else {
+                num2 = curNum.text.toString().toDouble()
+                num1 = backNum.text.toString().toDouble()
+                var result = 0.0
+                when (operation) {
+                    "+" -> result = num1 + num2
+                    "-" -> result = num1 - num2
+                    "*" -> result = num1 * num2
+                    "/" -> result = num1 / num2
+                }
+                if (result % 10.0 == 0.0)
+                    backNum.text = result.toInt().toString()
+                else
+                    backNum.text = result.toString()
+                num2 = result
+                curNum.text.clear()
+                operation = "/"
+                operationText.text = operation
+            }
         }
 
         val btnMulti: Button = findViewById(R.id.butMulti)
         btnMulti.setOnClickListener {
-            if(curNum.text.isNotEmpty() || backNum.text.isNotEmpty() || operationText.text.isNotEmpty()) {
+            if (backNum.text.isEmpty() || operationText.text.isEmpty() || curNum.text.isEmpty()) {
+                operation = "*"
+                operationText.text = operation
+                backNum.text = curNum.text
+                curNum.text.clear()
+                num1 = backNum.text.toString().toDouble()
 
             }
             else {
+                num2 = curNum.text.toString().toDouble()
+                num1 = backNum.text.toString().toDouble()
+                var result = 0.0
+                when (operation) {
+                    "+" -> result = num1 + num2
+                    "-" -> result = num1 - num2
+                    "*" -> result = num1 * num2
+                    "/" -> result = num1 / num2
+                }
+                if (result % 10.0 == 0.0)
+                    backNum.text = result.toInt().toString()
+                else
+                    backNum.text = result.toString()
+                num2 = result
+                curNum.text.clear()
                 operation = "*"
                 operationText.text = operation
-                val currentText = curNum.text.toString()
-                curNum.text = ""
-                backNum.text = currentText
-                num1 = backNum.text.toString().toDouble()
             }
         }
 
 
         val btnEq: Button = findViewById(R.id.butEqual)
         btnEq.setOnClickListener {
-            if(curNum.text.isNotEmpty() || backNum.text.isNotEmpty() || operationText.text.isNotEmpty()) {
+            try {
                 num2 = curNum.text.toString().toDouble()
-                if (num2 == 0.0) {
-                    Toast.makeText(this, "Заполните поле ввода", Toast.LENGTH_SHORT).show()
+                num1 = backNum.text.toString().toDouble()
+                var result = 0.0
+                if (operation == "/" && num2 == 0.0) {
+                    backNum.text = ""
+                    operationText.text = ""
+                    curNum.error = "Division by zero is not allowed"
+                    curNum.requestFocus()
+                    return@setOnClickListener
                 }
-                else
-                {
-                    var result: Double = 0.0
+                else {
                     when (operation) {
                         "+" -> result = num1 + num2
                         "-" -> result = num1 - num2
                         "*" -> result = num1 * num2
                         "/" -> result = num1 / num2
                     }
-                    //answer = true
-                    if(result % 10.0 == 0.0)
-                        backNum.text = result.toInt().toString()
-                    else
-                        backNum.text = result.toString()
-                    num2 = result
+                        curNum.text.clear()
+                        curNum.append(result.toString())
+                        backNum.text = ""
+                        operationText.text = ""
+                        num2 = result
+
+                }
+            }
+            catch (e : Exception){
+                if (curNum.text.isEmpty()) {
+                    backNum.text = ""
+                    operationText.text = ""
+                    curNum.text.clear()
+                    curNum.error = "Input first number"
+                    curNum.requestFocus()
+                    return@setOnClickListener
+
+                } else if (backNum.text.isEmpty()) {
+                    backNum.text = ""
+                    operationText.text = ""
+                    curNum.text.clear()
+                    curNum.error = "Input second number"
+                    curNum.requestFocus()
+                    return@setOnClickListener
+                } else if (operationText.text.isEmpty()) {
+                    backNum.text = ""
+                    operationText.text = ""
+                    curNum.text.clear()
+                    curNum.error = "Input operation"
+                    curNum.requestFocus()
+                    return@setOnClickListener
                 }
             }
 
-            else {curNum.text = "";
-                Toast.makeText(this, "Заполните всн поля ввода", Toast.LENGTH_SHORT).show()
-            }
         }
     }
 }

@@ -10,18 +10,17 @@
         android:id="@+id/tVOperation"
         android:layout_width="382dp"
         android:layout_height="54dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="12dp"
         android:accessibilityLiveRegion="none"
         android:textAlignment="viewEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/material_dynamic_neutral50"
         android:textSize="34sp"
         android:typeface="sans"
-        app:layout_constraintBottom_toTopOf="@+id/tVCurNum"
+        app:layout_constraintBottom_toTopOf="@+id/edCurNum"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tVBackNum"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/butClear"
@@ -37,18 +36,19 @@
         android:id="@+id/tVBackNum"
         android:layout_width="382dp"
         android:layout_height="49dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginTop="16dp"
         android:accessibilityLiveRegion="none"
         android:textAlignment="viewEnd"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/material_dynamic_neutral50"
+        android:textColor="@color/material_dynamic_neutral0"
         android:textSize="34sp"
         android:typeface="sans"
-        app:layout_constraintBottom_toTopOf="@+id/tVCurNum"
+        app:layout_constraintBottom_toTopOf="@+id/tVOperation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/butEqual"
@@ -220,16 +220,19 @@
         app:layout_constraintBottom_toTopOf="@+id/butFive"
         app:layout_constraintStart_toEndOf="@+id/butSeven" />
 
-    <TextView
-        android:id="@+id/tVCurNum"
-        android:layout_width="382dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="56dp"
+    <EditText
+        android:id="@+id/edCurNum"
+        android:layout_width="370dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:inputType="numberSigned|numberDecimal"
         android:textAlignment="viewEnd"
-        android:textColor="@color/black"
-        android:textSize="60sp"
+        android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/butMulti"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
